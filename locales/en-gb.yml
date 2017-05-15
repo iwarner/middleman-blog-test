@@ -1,0 +1,13 @@
+##
+# English locale file
+#
+# @author   Ian Warner <ian.warner@drykiss.com>
+# @category locale
+##
+
+---
+
+# English
+en-gb:
+
+    hello : "Hello world"

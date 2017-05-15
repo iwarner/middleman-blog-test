@@ -1,0 +1,137 @@
+-# Variable
+- blogName = "No Blog"
+
+-# HTML5 doctype
+!!! 5
+
+%html
+
+    %head
+
+        %title Middleman Test Suite
+
+    -# Body with page class
+    -# Contains the main itemscope of the current page
+    %body{ class: page_classes }
+
+        %hr
+
+        %h3 Navigation
+
+        -# Middleman sitemap link
+        = link_to "Middleman", "/__middleman", { target: "_blank" }
+        |
+        -# Language links
+        = link_to "English", "/../"
+        |
+        = link_to "French",  "/fr-be"
+        |
+        -# Test link - should prepend language
+        = link_to "Test", "test"
+        |
+        -# Test link - should prepend language
+        = link_to "Folder", "folder/folder.html"
+        |
+        -# Test link - should prepend language
+        = link_to "Folder", "folder/folder.html"
+        |
+        -# Test link - should prepend language
+        = link_to "Promotions category", localePath( "/promotions.html" )
+
+        %hr
+
+        %h3 Locale
+
+        %dl
+
+            %dt Langs
+            %dd= langs.inspect
+
+            %dt Locale
+            %dd= locale.inspect
+
+            %dt Locale
+            %dd= I18n.locale.inspect
+
+            %dt Locale
+            %dd= extensions[ :i18n ].locales
+
+            %dt Mounted at root
+            %dd= extensions[ :i18n ].options[ :mount_at_root ].inspect
+
+            %dt I18n
+            %dd= extensions[ :i18n ].inspect
+
+        -# %h3 Middleman::Sitemap
+
+        -# = sitemap.inspect
+
+        %hr
+
+        %h3 Middleman::Sitemap::Resource
+
+        %p http://www.rubydoc.info/gems/middleman-core/3.3.0/Middleman/Sitemap/Resource#add_metadata-instance_method
+
+        %p current_page is an alias to current_resource
+
+        -# Check whether this page is a Blog
+        - if current_page.is_a? Middleman::Blog::BlogArticle
+            %p This page is a blog article
+            - blogName = blog_controller.name
+
+         Try to change the blog name dynamically
+        - current_page.add_metadata( { "blog" => "blog3" } )
+        - current_page.add_metadata( { "title" => "blog3" } )
+
+        %dl
+
+            %dt Path - The source path of this resource
+            %dd= current_page.path
+
+            %dt Destination path - The output/preview URL for this resource
+            %dd= current_page.destination_path
+
+            %dt URL
+            %dd= current_page.url
+
+            %dt Blog
+            %dd= blogName
+
+            %dt Binary
+            %dd= current_page.binary?
+
+            %dt Binary
+            %dd= current_page.ext
+
+            %dt Source file
+            %dd= current_page.source_file
+
+            %dt Template
+            %dd= current_page.template?
+
+            %dt Content type
+            %dd= current_page.content_type
+
+            %dt Template
+            %dd= current_page.directory_index?
+
+            %dt Parent
+            %dd= current_page.parent
+
+            %dt Siblings
+            %dd= current_page.siblings
+
+            %dt Children
+            %dd
+                - current_page.children.each do | child |
+                    = child.path
+
+            -# %dt Blog instances
+            -# %dd= blog_instances
+
+            -# %dt Metadata
+            -# %dd= current_page.metadata
+
+        %hr
+
+        = yield

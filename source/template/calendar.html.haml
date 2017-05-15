@@ -1,0 +1,60 @@
+---
+
+# Blog
+pageable : true
+per_page : 6
+
+# Template
+template : true
+
+---
+
+%hr
+
+%dl
+
+    %dt Page Type
+    %dd= page_type
+
+    %dt Year
+    %dd= year
+
+    - if page_type == "month" || page_type == "day"
+        %dt Month
+        %dd= month
+
+    - if page_type == "day"
+        %dt Day
+        %dd= day
+
+List posts
+
+-# By category - category
+- page_articles.each_with_index do | article, index |
+
+    -# Title
+    %h3= "Title : #{ link_to article.title, article.url }"
+
+    -# Link to the blog post via year
+    -# @see http://www.rubydoc.info/github/middleman/middleman-blog/Middleman/Blog/Helpers#blog_day_path-instance_method
+    %h4 Date links
+    %p= link_to "#{ article.date.year } #{ article.date.month } #{ article.date.day }", blog_day_path( article.date.year, article.date.month, article.date.day, "blog_#{ locale }" )
+    %p= link_to "#{ article.date.year } #{ article.date.month }", blog_month_path( article.date.year, article.date.month, "blog_#{ locale }" )
+    %p= link_to article.date.year, blog_year_path( article.date.year, "blog_#{ locale }" )
+
+    -# Category
+    %h3 Category
+    %p= link_to article.data.category, category_path( article.data.category, "blog_#{ locale }" )
+
+    -# Author
+    %h3 Author
+    %p= link_to article.data.author, category_path( article.data.author, "blog_#{ locale }" )
+
+    -# Tags
+    %h3 Tags
+    - article.tags.each do | tag |
+        = tag
+        = tag_path( tag, "blog_#{ locale }" )
+        = link_to tag, tag_path( tag, "blog_#{ locale }" )
+
+    %hr

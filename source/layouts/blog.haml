@@ -1,0 +1,120 @@
+-##
+-# Article layout
+-#
+-# @usage
+-# -# Article layout
+-# = wrap_layout "_codeBlender/article" do
+-#
+-# @author   Ian Warner <ian.warner@drykiss.com>
+-# @category layout
+-##
+
+-# Article
+= wrap_layout "layout" do
+
+    BLOG
+
+    = yield
+
+    %p Must name a blog if more than one blog - or use the blog frontmatter
+
+    Blog 1 - Articles
+    For page articles on home page need to set frontmatter blog: `name`
+    %h1 Page Articles
+
+    -# List articles
+    - page_articles.each do | article |
+
+        %article
+            = link_to article.url do
+                %h1= article.title
+
+    %hr
+
+    %h1 Named blog - blog_en-gb
+    - blog( "blog_en-gb" ).articles.each do | article |
+
+        %article
+            = link_to article.url do
+                %h1= article.title
+
+    %h1 Named blog - blog_fr-be
+    - blog( "blog_fr-be" ).articles.each do | article |
+
+        %article
+            = link_to article.url do
+                %h1= article.title
+
+    -# Heading
+    %h1 Named blog - dynamic name
+
+    -# List blogs
+    - blog( "blog_#{ locale }" ).articles.each do | article |
+
+        -# Title
+        %h3= "Title : #{ link_to article.title, article.url }"
+
+        -# Link to the blog post via year
+        -# @see http://www.rubydoc.info/github/middleman/middleman-blog/Middleman/Blog/Helpers#blog_day_path-instance_method
+        %h4 Date links
+        %p= link_to "#{ article.date.year } #{ article.date.month } #{ article.date.day }", blog_day_path( article.date.year, article.date.month, article.date.day, "blog_#{ locale }" )
+        %p= link_to "#{ article.date.year } #{ article.date.month }", blog_month_path( article.date.year, article.date.month, "blog_#{ locale }" )
+        %p= link_to article.date.year, blog_year_path( article.date.year, "blog_#{ locale }" )
+
+        -# Category
+        %h3 Category
+        %p= link_to article.data.category, category_path( article.data.category, "blog_#{ locale }" )
+
+        -# Author
+        %h3 Author
+        %p= link_to article.data.author, category_path( article.data.author, "blog_#{ locale }" )
+
+        -# Tags
+        %h3 Tags
+        - article.tags.each do | tag |
+            = link_to tag, tag_path( tag, "blog_#{ locale }" )
+
+        %hr
+
+    -# All tags
+    %h3 All Tags
+    - blog( "blog_#{ locale }" ).tags.each do | tag, articles |
+
+        = link_to tag, tag_path( tag, "blog_#{ locale }" )
+
+    -# -# Pagination
+    -# .pagination
+
+    -#     %ul
+    -#         %li{ class: prev_page ? "" : "disabled" }
+
+    -#             - if prev_page
+
+    -#                 = link_to "Prev", prev_page.url
+
+    -#             - else
+
+    -#                 %span Prev
+
+    -#         - ( page_number - 2 .. page_number + 2 ).select{ | i | i > 0 && i <= num_pages }.each do | i |
+
+    -#             - if i == page_number
+
+    -#                 %li.active
+    -#                     %span= i
+
+    -#             - else
+
+    -#                 %li
+    -#                     - p = nil
+    -#                     - ( i ... page_number ).each do p = p ? p.metadata[ :locals ][ 'prev_page' ] : prev_page; end
+    -#                     - ( page_number ... i ).each do p = p ? p.metadata[ :locals ][ 'next_page' ] : next_page; end
+    -#                     = link_to "#{ i }", p && p.url
+
+    -#         %li{:class => next_page ? "" : "disabled"}
+    -#             - if next_page
+    -#                 =link_to "Next", next_page.url
+    -#             - else
+    -#                 %span Next
+
+    -# %hr
