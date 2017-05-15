@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Middleman Test Suite</title>
+</head>
+<body class='fr-be fr-be_introducing-deliveroo-french-2'>
+<hr>
+<h3>Navigation</h3>
+<a href="/__middleman" target="_blank">Middleman</a>
+|
+<a href="/../">English</a>
+|
+<a href="/fr-be">French</a>
+|
+<a href="/fr-be/test.html">Test</a>
+|
+<a href="/fr-be/folder/folder.html">Folder</a>
+|
+<a href="/fr-be/folder/folder.html">Folder</a>
+|
+<a href="/fr-be/promotions.html">Promotions category</a>
+<hr>
+<h3>Locale</h3>
+<dl>
+<dt>Langs</dt>
+<dd>[:"en-gb", :"fr-be"]</dd>
+<dt>Locale</dt>
+<dd>:"fr-be"</dd>
+<dt>Locale</dt>
+<dd>:"fr-be"</dd>
+<dt>Locale</dt>
+<dd>[:"en-gb", :"fr-be"]</dd>
+<dt>Mounted at root</dt>
+<dd>:"en-gb"</dd>
+<dt>I18n</dt>
+<dd>#<Middleman::CoreExtensions::Internationalization:0x007fc7d8b28b60 @_helpers=[], @app=#<Middleman::Application:0x70248164768400>, @options=#<Middleman::Configuration::ConfigurationManager:0x007fc7d8b28728 @settings={:data=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cbac0 @value_set=false, @key=:data, @default="locales", @description="The directory holding your locale configurations", @options={}>, :lang_map=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cba48 @value_set=false, @key=:lang_map, @default=nil, @description="Backwards compatibility if old option name. Use `locale_map` instead.", @options={}>, :langs=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cb9f8 @value_set=false, @key=:langs, @default=nil, @description="Backwards compatibility if old option name. Use `locales` instead.", @options={}>, :locale_map=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cb9d0 @value_set=false, @key=:locale_map, @default={}, @description="Locale shortname map", @options={}>, :locales=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cb980 @value_set=true, @key=:locales, @default=nil, @description="List of locales, will autodiscover by default", @options={}, @value=[:"en-gb", :"fr-be"]>, :mount_at_root=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cb958 @value_set=true, @key=:mount_at_root, @default=nil, @description="Mount a specific locale at the root of the site", @options={}, @value=:"en-gb">, :no_fallbacks=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cb930 @value_set=false, @key=:no_fallbacks, @default=false, @description="Disable I18n fallbacks", @options={}>, :path=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cb908 @value_set=false, @key=:path, @default="/:locale/", @description="URL prefix path", @options={}>, :templates_dir=>#<Middleman::Configuration::ConfigSetting:0x007fc7da1cb8b8 @value_set=false, @key=:templates_dir, @default="localizable", @description="Location of templates to be localized", @options={}>}, @finalized=true>, @maps={}, @mount_at_root=:"en-gb", @locales=[:"en-gb", :"fr-be"], @lookup={"/404.html"=>{:"en-gb"=>"/404.html", :"fr-be"=>"/fr-be/404.html"}, "/folder/folder.html"=>{:"en-gb"=>"/folder/folder.html", :"fr-be"=>"/fr-be/folder/folder.html"}, "/index.html"=>{:"en-gb"=>"/index.html", :"fr-be"=>"/fr-be/index.html"}, "/international.html"=>{:"en-gb"=>"/international.html", :"fr-be"=>"/fr-be/international.html"}, "/test.html"=>{:"en-gb"=>"/test.html", :"fr-be"=>"/fr-be/test.html"}}></dd>
+</dl>
+<hr>
+<h3>Middleman::Sitemap::Resource</h3>
+<p>http://www.rubydoc.info/gems/middleman-core/3.3.0/Middleman/Sitemap/Resource#add_metadata-instance_method</p>
+<p>current_page is an alias to current_resource</p>
+<p>This page is a blog article</p>
+ Try to change the blog name dynamically
+<dl>
+<dt>Path - The source path of this resource</dt>
+<dd>blogLocaleFolders/fr-be/tester4.html</dd>
+<dt>Destination path - The output/preview URL for this resource</dt>
+<dd>fr-be/introducing-deliveroo-french-2.html</dd>
+<dt>URL</dt>
+<dd>/fr-be/introducing-deliveroo-french-2.html</dd>
+<dt>Blog</dt>
+<dd>blog_fr-be</dd>
+<dt>Binary</dt>
+<dd>false</dd>
+<dt>Binary</dt>
+<dd>.html</dd>
+<dt>Source file</dt>
+<dd>/Users/ianwarner/Dropbox/www/Middleman/middleman-test/source/blogLocaleFolders/fr-be/tester4.html.md</dd>
+<dt>Template</dt>
+<dd>true</dd>
+<dt>Content type</dt>
+<dd>text/html; charset=utf-8</dd>
+<dt>Template</dt>
+<dd>false</dd>
+<dt>Parent</dt>
+<dd></dd>
+<dt>Siblings</dt>
+<dd>[]</dd>
+<dt>Children</dt>
+<dd>
+</dd>
+</dl>
+<hr>
+BLOG
+<p>Tester 4</p>
+
+<p>Must name a blog if more than one blog - or use the blog frontmatter</p>
+Blog 1 - Articles
+For page articles on home page need to set frontmatter blog: `name`
+<h1>Page Articles</h1>
+<article>
+<a href="/fr-be/introducing-deliveroo-french-2.html"><h1>Tester 4</h1>
+</a></article>
+<hr>
+<h1>Named blog - blog_en-gb</h1>
+<article>
+<a href="/tester6.html"><h1>Tester 6</h1>
+</a></article>
+<article>
+<a href="/introducing-deliveroo-foodscene-3.html"><h1>Tester 5</h1>
+</a></article>
+<article>
+<a href="/introducing-deliveroo-foodscene-2.html"><h1>Tester 3</h1>
+</a></article>
+<article>
+<a href="/tester1.html"><h1>Keep going with the development</h1>
+</a></article>
+<h1>Named blog - blog_fr-be</h1>
+<article>
+<a href="/fr-be/introducing-deliveroo-french-2.html"><h1>Tester 4</h1>
+</a></article>
+<h1>Named blog - dynamic name</h1>
+<h3>Title : <a href="/fr-be/introducing-deliveroo-french-2.html">Tester 4</a></h3>
+<h4>Date links</h4>
+<p><a href="/fr-be/archive/2012/10/13.html">2012 10 13</a></p>
+<p><a href="/fr-be/archive/2012/10.html">2012 10</a></p>
+<p><a href="/fr-be/archive/2012.html">2012</a></p>
+<h3>Category</h3>
+<p><a href="/fr-be/promotions.html">promotions</a></p>
+<h3>Author</h3>
+<p><a href="/fr-be/editor.html">Editor</a></p>
+<h3>Tags</h3>
+<a href="/fr-be/tag/foodscene.html">foodscene</a>
+<a href="/fr-be/tag/french.html">french</a>
+<a href="/fr-be/tag/tester4.html">tester4</a>
+<hr>
+<h3>All Tags</h3>
+<a href="/fr-be/tag/foodscene.html">foodscene</a>
+<a href="/fr-be/tag/french.html">french</a>
+<a href="/fr-be/tag/tester4.html">tester4</a>
+
+</body>
+</html>
